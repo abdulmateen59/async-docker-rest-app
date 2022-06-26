@@ -85,7 +85,7 @@ def push_image(self,
         raise ex
 
 
-@celery_app.task(bind=True)
+@celery_app.task
 def send_email() -> dict[str, str]:
     """
     Background task that sends an email to the user.

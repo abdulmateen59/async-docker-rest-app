@@ -20,7 +20,7 @@ celery_app.autodiscover_tasks()
 celery_app.conf.beat_schedule = {
     'send-emails-periodically': {
         'task': 'celery_app.tasks.send_email',
-        'schedule': 120,  # every 2 minutes
+        'schedule': 60,  # every minute
     },
 }
 celery_app.conf.timezone = 'UTC'

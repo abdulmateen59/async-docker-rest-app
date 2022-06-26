@@ -1,15 +1,12 @@
 import traceback
-from datetime import datetime
 from io import BytesIO
 
 import docker
 from celery import states
-from celery.schedules import crontab
 from loguru import logger
 
 from celery_app import celery_app
 from celery_app import settings
-from datetime import timezone
 
 
 @celery_app.task(bind=True)
@@ -89,11 +86,10 @@ def push_image(self,
 
 
 @celery_app.task(bind=True)
-def send_email(recipient: str = '', message: str = '') -> dict[str, str]:
+def send_email() -> dict[str, str]:
     """
     Background task that sends an email to the user.
     """
 
     logger.info('Sending email to user...')
-    logger.info(f'{recipient} - {message}')
     return {'status': 'Email sent'}

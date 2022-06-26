@@ -1,5 +1,4 @@
 from celery import Celery
-from celery.schedules import crontab
 
 from settings import Settings
 
@@ -11,8 +10,6 @@ def make_celery():
         'worker',
         broker=settings.celery_broker_url,
         backend=settings.celery_result_backend,
-        broker_transport_options={'visibility_timeout': 3600},
-        result_backend_transport_options={'visibility_timeout': 3600},
         include=["celery_app.tasks"],
         task_track_started=True,
     )
@@ -23,7 +20,7 @@ celery_app.autodiscover_tasks()
 celery_app.conf.beat_schedule = {
     'send-emails-periodically': {
         'task': 'celery_app.tasks.send_email',
-        'schedule': crontab(hour=1, minute=0),
+        'schedule': 120,  # every 2 minutes
     },
 }
 celery_app.conf.timezone = 'UTC'

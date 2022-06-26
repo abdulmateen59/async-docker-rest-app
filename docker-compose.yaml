@@ -81,7 +81,7 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/1
       - DOCKER_REGISTRY_URL=ghcr.io/abdulmateen59/async-docker-rest-app
       - DOCKER_REGISTRY_USERNAME=abdulmateen59
-      - DOCKER_REGISTRY_PASSWORD=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
+      - DOCKER_REGISTRY_PASSWORD=iAmDummytokenReplaceMe
       - DOCKER_HOST=tcp://docker:2375
     depends_on:
       - redis

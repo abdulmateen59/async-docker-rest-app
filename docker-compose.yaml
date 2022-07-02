@@ -110,7 +110,7 @@ services:
     container_name: dashboard
     command: >
       sh -c "sleep 03 && 
-             celery --app=docker_rest_app.celery_app flower --port=5555 --broker=amqp://user:pwd@rabbitmq:5672/"
+      celery --app=docker_rest_app.celery_app flower --port=5555 --broker=amqp://user:pwd@rabbitmq:5672/ --broker_api=http://user:pwd@rabbitmq:15672/api/"
     ports:
       - "5555:5555"
     environment:

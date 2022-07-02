@@ -24,3 +24,11 @@ celery_app.conf.beat_schedule = {
     },
 }
 celery_app.conf.timezone = 'UTC'
+
+# sentry_sdk.init(
+#     dsn='',
+#     integrations=[
+#         CeleryIntegration(),
+#     ],
+#     traces_sample_rate=1.0,
+# )
